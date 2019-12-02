@@ -1,36 +1,45 @@
-import React from 'react'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
-import Page from './pages/Page'
-import Page2 from './pages/Page2'
-import HomePage from './pages/HomePage'
-import NotFound from './pages/NotFound'
+import React, { useState } from 'react'
+import Button from './components/Button'
+import Input from './components/Input'
+import ClearButton from './components/ClearButton'
 
-const App = () => {
+const App = props => {
   return (
-    <Router>
-      <header>
-        <h1>Welcome to my SPA</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Go Home</Link>
-            </li>
-            <li>
-              <Link to="/1">Page 1</Link>
-            </li>
-            <li>
-              <Link to="/2">Page 2</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <Switch>
-        <Route exact path="/" component={HomePage}></Route>
-        <Route exact path="/1" component={Page}></Route>
-        <Route exact path="/2" component={Page2}></Route>
-        <Route path="*" component={NotFound}></Route>
-      </Switch>
-    </Router>
+    <>
+      <div className="app">
+        <div className="calc-wrapper">
+          <Input input={props.input}>0</Input>
+          <div className="row">
+            <ClearButton handleClear={props.handleClear}>Clear</ClearButton>
+          </div>
+
+          <div className="row">
+            <Button handleClick={props.addInput}>7</Button>
+            <Button handleClick={props.addInput}>8</Button>
+            <Button handleClick={props.addInput}>9</Button>
+            <Button handleClick={props.addInput}>/</Button>
+          </div>
+          <div className="row">
+            <Button handleClick={props.addInput}>4</Button>
+            <Button handleClick={props.addInput}>5</Button>
+            <Button handleClick={props.addInput}>6</Button>
+            <Button handleClick={props.addInput}>x</Button>
+          </div>
+          <div className="row">
+            <Button handleClick={props.addInput}>1</Button>
+            <Button handleClick={props.addInput}>2</Button>
+            <Button handleClick={props.addInput}>3</Button>
+            <Button handleClick={props.addInput}>-</Button>
+          </div>
+          <div className="row">
+            <Button handleClick={props.addInput}>.</Button>
+            <Button handleClick={props.addInput}>0</Button>
+            <Button handleClick={props.addInput}>=</Button>
+            <Button handleClick={props.addInput}>+</Button>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
