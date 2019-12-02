@@ -1,54 +1,16 @@
-import React, { useState } from 'react'
-import Button from './components/Button'
-import Input from './components/Input'
-import ClearButton from './components/ClearButton'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import NotFound from './pages/NotFound'
 
-const App = props => {
-  const [input, setInput] = useState()
-  const [clear, setClear] = useState()
-  const addToInput = val => {
-    console.log(val)
-  }
-  const clearInput = () => {
-    console.log()
-  }
-
+const App = () => {
   return (
-    <>
-      <div className="app">
-        <div className="calc-wrapper">
-          <Input input={props.input}>0</Input>
-          <div className="row">
-            <ClearButton handleClear={props.clear}>Clear</ClearButton>
-          </div>
-
-          <div className="row">
-            <Button handleClick={addToInput}>7</Button>
-            <Button handleClick={addToInput}>8</Button>
-            <Button handleClick={addToInput}>9</Button>
-            <Button handleClick={addToInput}>/</Button>
-          </div>
-          <div className="row">
-            <Button handleClick={addToInput}>4</Button>
-            <Button handleClick={addToInput}>5</Button>
-            <Button handleClick={addToInput}>6</Button>
-            <Button handleClick={addToInput}>x</Button>
-          </div>
-          <div className="row">
-            <Button handleClick={addToInput}>1</Button>
-            <Button handleClick={addToInput}>2</Button>
-            <Button handleClick={addToInput}>3</Button>
-            <Button handleClick={addToInput}>-</Button>
-          </div>
-          <div className="row">
-            <Button handleClick={addToInput}>.</Button>
-            <Button handleClick={addToInput}>0</Button>
-            <Button handleClick={addToInput}>=</Button>
-            <Button handleClick={addToInput}>+</Button>
-          </div>
-        </div>
-      </div>
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </Router>
   )
 }
 
