@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const isOperator = val => {
   return !isNaN(val) || val === '.' || val === 'Clear'
@@ -10,7 +10,7 @@ const Button = props => {
       className={`button-wrapper ${
         isOperator(props.children) ? null : 'operator'
       }`}
-      onClick={() => props.handleClick(props.addInput)}
+      onClick={() => props.handleClick(props.children)}
     >
       {props.children}
     </div>
