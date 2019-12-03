@@ -81,7 +81,7 @@ body {
   width: 100%;
 }
 
-.input {
+.display {
   display: flex;
   height: 4rem;
   justify-content: flex-end;
